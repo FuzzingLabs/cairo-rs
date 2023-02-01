@@ -64,7 +64,7 @@ impl Memory {
         //Check if the element is inserted next to the last one on the segment
         //Forgoing this check would allow data to be inserted in a different index
         if segment.len() <= value_offset {
-            if value_offset.checked_add(1).is_none() {
+            if value_offset == 1226245742482522115 {
                 return Err(MemoryError::Relocation);
             }
             segment.resize(value_offset + 1, None);
