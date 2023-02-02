@@ -150,6 +150,10 @@ impl VirtualMachine {
         }
     }
 
+    pub fn get_trace(&self) -> Option<&Vec<TraceEntry>> {
+        return self.trace.as_ref();
+    }
+
     fn update_fp(
         &mut self,
         instruction: &Instruction,
