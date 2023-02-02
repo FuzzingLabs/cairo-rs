@@ -1,7 +1,7 @@
 use crate::{
     serde::deserialize_program::{
-        deserialize_program, Attribute, HintParams, Identifier, InstructionLocation,
-        ReferenceManager,
+        deserialize_program, deserialize_program_from_string, Attribute, HintParams, Identifier,
+        InstructionLocation, ReferenceManager,
     },
     types::{errors::program_errors::ProgramError, relocatable::MaybeRelocatable},
 };
@@ -70,6 +70,10 @@ impl Program {
             error_message_attributes,
             instruction_locations,
         })
+    }
+
+    pub fn from_string(json: &String, entrypoint: Option<&str>) -> Result<Program, ProgramError> {
+        deserialize_program_from_string(json, entrypoint)
     }
 
     pub fn from_file(path: &Path, entrypoint: Option<&str>) -> Result<Program, ProgramError> {
