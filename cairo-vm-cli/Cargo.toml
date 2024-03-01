@@ -1,0 +1,24 @@
+[package]
+name = "cairo-vm-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+keywords.workspace = true
+
+[dependencies]
+cairo-vm = { workspace = true, features = ["std"] }
+clap = { version = "4.3.10", features = ["derive"] }
+mimalloc = { version = "0.1.37", default-features = false, optional = true }
+nom = "7"
+thiserror = { version = "1.0.40" }
+bincode.workspace = true
+
+[dev-dependencies]
+assert_matches = "1.5.0"
+rstest = "0.17.0"
+
+[features]
+default = ["with_mimalloc"]
+with_mimalloc = ["cairo-vm/with_mimalloc", "dep:mimalloc"]
